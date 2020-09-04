@@ -34,6 +34,4 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-  // if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
-  // else next()
 });
