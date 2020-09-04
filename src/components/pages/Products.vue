@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-right">
-      <button class="btn btn-primary">建立我的清單</button>
+      <button class="btn btn-primary" @click="openModal">建立我的清單</button>
     </div>
     <table class="table mt-4">
       <thead>
@@ -28,10 +28,29 @@
         </tr>
       </tbody>
     </table>
+    <div class="modal fade" id="productsModal" tabindex="-1" aria-labelledby="productsModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="productsModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
   data() {
     return {
@@ -46,6 +65,9 @@ export default {
         console.log(response);
         vm.products = response.data.products;
       });
+    },
+    openModal() {
+      $('#productsModal').modal('show');
     },
   },
   created() {
